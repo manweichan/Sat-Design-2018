@@ -8,6 +8,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
+
+#Function takes in two orbit objects from poliastro
+#and returns the delta V value for the plane change
+#in km/s. Assumes orbites are circular.
 def inc_change_delV(orbit1, orbit2):
 	inc1 = orbit1.inc
 	inc2 = orbit2.inc
