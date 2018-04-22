@@ -129,3 +129,14 @@ servicer1 =  Servicer(initialOrbit, dryMass = dry_mass, \
 # Try using half of all impulsive thruster fuel first:
 print('Total Delta-V required: ' + str(delV *0.001) + 'km/s')
 print('Inclination Change of ' + str(delI) + ' deg, takes ' + str(time/(3600*24)) + ' days')
+
+
+#%% Power is super important!
+# make a plot of OAP vs. inclination change costs and time ( look for inflection points) 
+# look at hall effect thruster (SME:SMAD), NEXT ion thruster (NASA paper), and other ion thrusters (SME:SMAD)
+
+
+#%% Mission Based plots
+# take a certain mission profile (X number refuels, Y numberr replacements, etc) and calculate revenue over time.
+
+# should I make a separate mission class? or just have a servicer take in a mission one by one and have a mission directionary
