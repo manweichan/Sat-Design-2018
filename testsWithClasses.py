@@ -39,23 +39,25 @@ The twinx and twiny methods are also exposed as pyplot functions.
 
 """
 
-fig, ax1 = plt.subplots()
-t = np.arange(0.01, 10.0, 0.01)
-s1 = np.exp(t)
-ax1.plot(t, s1, 'b-')
-ax1.set_xlabel('time (s)')
-# Make the y-axis label, ticks and tick labels match the line color.
-ax1.set_ylabel('exp', color='b')
-ax1.tick_params('y', colors='b')
-
-ax2 = ax1.twinx()
-s2 = np.sin(2 * np.pi * t)
-ax2.plot(t, s2, 'r.')
-ax2.set_ylabel('sin', color='r')
-ax2.tick_params('y', colors='r')
-
-fig.tight_layout()
-plt.show()
+#==============================================================================
+# fig, ax1 = plt.subplots()
+# t = np.arange(0.01, 10.0, 0.01)
+# s1 = np.exp(t)
+# ax1.plot(t, s1, 'b-')
+# ax1.set_xlabel('time (s)')
+# # Make the y-axis label, ticks and tick labels match the line color.
+# ax1.set_ylabel('exp', color='b')
+# ax1.tick_params('y', colors='b')
+# 
+# ax2 = ax1.twinx()
+# s2 = np.sin(2 * np.pi * t)
+# ax2.plot(t, s2, 'r.')
+# ax2.set_ylabel('sin', color='r')
+# ax2.tick_params('y', colors='r')
+# 
+# fig.tight_layout()
+# plt.show()
+#==============================================================================
 
 #%% Using pertrubations to change RAAN
 J2 = 0.0010826
@@ -121,6 +123,12 @@ ax2.set_ylabel('Total Delta-V cost of maneuver (km/s)',color='r')
 #plt.legend(['number of service missions ( ' + str(serviceMissionDelV) +' m/s each)','number of ' + str(delI) +'  deg inclination changes'])plt.title('Starting Servicer Orbit: ' + str(initialOrbit) + ' \n km/s cost to execute a 60 degree RAAN Change from drift only')
 plt.show()
 
+initialMass = 11000
+delV = 1220
+Isp_monarc445 = 234
+finalMass_delV = initialMass/np.exp(delV/(Isp_monarc445*9.82))
+print('kg of hydrazine required for deltaV manuever is:' + str(initialMass - finalMass_delV ))
+# for 1.22 km/s of delta-V with MONARC-445 thruster (Isp of 234 sec)
 # baseline for the paper: with a 4.65 degree inclination change (executed twice), we have a total cost of 1.22 km/s delta-V and it will be drifting for roughly 3.5 months
 #%% servicer class demos
 max_servicer_mass = 11000 # kg
